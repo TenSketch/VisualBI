@@ -1,0 +1,362 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+// SCSS variables
+$clr-primary: #4eb1f0;
+$border-primary: 1px solid #f1f1f1;
+$border-secondary: 1px solid #d1d5db;
+$text-light: #666666;
+$text-light2: #7d7d7d;
+$text-dark: #333333;
+$gray: #111827;
+$icons: #999999;
+$text-white: #fff;
+$background: #0084ff;
+// $color:#5F5F60;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+@mixin flex($alignI, $justifyC) {
+  display: flex;
+  align-items: $alignI;
+  justify-content: $justifyC;
+}
+body {
+  font-family: "Inter", sans-serif;
+  @include flex(stretch, flex-start);
+  // overflow-x: hidden;
+  font-size: 12px;
+  position: relative;
+  height: 100vh;
+}
+
+img {
+  max-width: 100%;
+  // display: block
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+
+aside {
+  @include flex(center, flex-start);
+  flex-direction: column;
+  text-align: center;
+  // gap: 1em;
+  // background-color: lightblue;
+  border-right: $border-primary;
+  flex-basis: 6%;
+  height: 100vh;
+  font-size: 0.8em;
+  color: $text-light;
+  div {
+    // background-color: lightcoral;
+    border-bottom: $border-primary;
+    width: 100%;
+    padding: 0.7rem;
+    height: 10vh;
+    // @include flex(center,center);
+    // flex-direction: column;
+    // height: 10vh;
+    &:nth-last-child(1){
+      border-left:2px solid #0085FF;
+      background: #EDF4FD;
+    }
+  }
+}
+main {
+  width: 94%;
+  // padding: 0 2rem;
+  // background-color: bisque
+}
+.container {
+  // padding: 0 2rem;
+  width: 95%;
+  // min-width: 80%;
+  margin: 0 auto;
+}
+.p-1 {
+  padding: 1em;
+}
+.px-1 {
+  padding: 0 1em;
+}
+nav {
+  border-bottom: $border-primary;
+  .container {
+    @include flex(center, space-between);
+    height: 10vh;
+    @media (max-width: 768px) {
+      
+    }
+  }
+}
+.search {
+  flex-basis: 30%;
+  @media(max-width:768px){
+    flex-basis: 90%;
+  }
+  .search-container {
+    // width: 30.75rem; 
+    position: relative;
+  }
+
+  input#search-bar {
+    padding: .7em 2em;
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+    width: 100%;
+    color: $gray;
+    
+    &:focus {
+      border: 1px solid #008abf;
+      transition: 0.35s ease;
+      color: #008abf;
+      &::placeholder{
+        transition: opacity 0.45s ease; 
+        opacity: 0;
+        
+       }
+    }
+  }
+
+  .search-icon {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+  }
+}
+.nav_list {
+  @include flex(center, flex-end);
+  gap: 1.5em;
+  // background-color: brown;
+  flex-basis: 20%;
+  @media (max-width: 768px) {
+    flex-basis: 60%;
+  }
+}
+.folder_nav {
+  padding: 0.7em 0;
+  // background-color: aliceblue;
+  border-bottom: $border-primary;
+  @include flex(center, flex-start);
+  a:nth-child(1),
+  i {
+    color: $text-light;
+    margin-right: 1em;
+  }
+  i {
+    font-size: 0.75em;
+  }
+  a:nth-child(3) {
+    color: $text-dark;
+    font-weight: 500;
+    
+  }
+}
+.folders {
+  padding-top: 1.5rem;
+  @include flex(stretch, flex-start);
+  flex-wrap: wrap;
+  // background-color:#4eb1f0;
+  gap: 1em;
+}
+.folder_box {
+  border: 1px solid #f1f1f1;
+  width: 11.625rem;
+  border-radius: 5px;
+  padding: .75em;
+}
+.folder_details {
+  @include flex(center, flex-start);
+  gap: 1em;
+  img{
+      height: 4vh;
+  }
+}
+.folder_name {
+  color: $text-dark;
+  font-size: 13px;
+  line-height: 18px;
+}
+.folder_count {
+  margin-left: 1.5em;
+  color: $text-light2;
+}
+.folder_icons {
+  @include flex(center, space-between);
+  color: $icons;
+  a{
+    img{
+      :hover{
+        color: $background;
+      }
+    }
+  }
+}
+
+// info section
+
+#info {
+  display: none;
+}
+.folder_info__silde {
+  position: fixed;
+  height: 85vh;
+  width: 18rem;
+  right: 0;
+  bottom: 0;
+  border: $border-primary;
+  box-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0px 10px 10px -5px rgba(0, 0, 0, 0.04);
+  background: $text-white;
+}
+.info_topBar {
+  @include flex(center, space-between);
+  div {
+    @include flex(center, flex-start);
+    gap: 1em;
+    // border: 1px solid black;
+    img {
+      height: 1.4rem;
+    }
+  }
+  img {
+    height: 0.6rem;
+    color: $text-light;
+  }
+  span {
+    color: $text-dark;
+  }
+}
+.navTab {
+  border-bottom: $border-secondary;
+}
+.navPills {
+  columns: 2;
+  width: fit-content;
+
+  li {
+    // cursor: pointer;
+
+    a {
+      padding-bottom: 1em;
+      color: #666666;
+      // transition: 250ms ease;
+
+    
+      &.active,&:hover{
+        // padding-bottom: 1em;
+        border-bottom: 2px solid $background;
+      }
+
+    }
+  }
+}
+
+
+#Details {
+  ul {
+    li {
+      @include flex(center, space-between);
+      margin-bottom: 1em;
+      p{
+        color:#666666;
+        &+p{
+          color: #333333;
+        }
+      }
+    }
+  }
+}
+.comment {
+  &::after {
+    position: absolute;
+    content: "";
+    border-bottom: 1px solid #d1d5db;
+    /* background: grey; */
+    width: 100%;
+    left: 0;
+    margin-top: 1.3em;
+  }
+  div {
+    position: relative;
+    // background-color: $clr-primary;
+    img {
+      float: left;
+      position: relative;
+      bottom: 4px;
+      & + img {
+        position: absolute;
+        left: 20px;
+        bottom: 0;
+        background: #fff;
+        border-radius: 4px;
+        /* padding: 0px; */
+        border: 1px solid #fff;
+        border-right: 0;
+        border-bottom: 0;
+        height: 1em;
+      }
+    }
+    
+  }
+  & > p {
+    clear: both;
+    position: relative;
+    left: 0.7em;
+  }
+}
+.commentText{
+  color: #111827;
+  font-weight: 500;
+}
+.textarea {
+  border: $border-primary;
+  border-left: 0;
+  border-right: 0;
+  margin-top: 5.5rem;
+}
+.mx-1 {
+  margin: 0 1em;
+}
+textarea {
+  width: 100%;
+  border: $border-secondary;
+  // box-shadow: 0px 1px 2px rgb(0 0 0 / 5%);
+  border-radius: 6px;
+  margin: 1em 1em 1em 0;
+  padding: 0.5rem;
+}
+
+.btn {
+  @include flex(center, flex-end);
+  gap: 1em;
+  margin-top: .5em;
+  // background-color: $clr-primary;
+
+  button {
+    cursor: pointer;
+    padding: 0.7em 1em;
+    border-radius: 4px;
+    border: none;
+    // box-shadow: 0px 0px 5px rgb(0 0 0 / 50%);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    &.commentBtn {
+      background: $background;
+      color: $text-white;
+    }
+  }
+  // .cancel{
+
+  // }
+}
